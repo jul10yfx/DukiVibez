@@ -36,12 +36,19 @@ palabras_excluir = set([
 st.set_page_config(page_title="🗺️ Guía de canciones de Duki", layout="wide") #Definir nombre de la pagina y definir completo de todo el ancho de la pantalla
 st.title("🗺️ Guía de canciones de Duki") #Definir titulo general de la pagina de streamlit
 
+url = "https://drive.google.com/uc?id=10rkx7VmJm1-WXDAXxaBUqPSiLXTN1NPS"
+
 # 📁 Carga de datos con caché
 @st.cache_data #Cargar base de datos y definir su formato
 def cargar_datos(): #Cargar base de datos y definir su formato
     canciones = pd.read_csv("canciones_duki.csv", sep=";", encoding="utf-8") #Cargar base de datos y definir su formato de codificacion
-    comentarios = pd.read_csv("comentarios_duki_para_analisis.csv", encoding="utf-8") #Cargar base de datos y definir su formato de codificacion
+    comentarios = pd.read_csv(url, encoding="utf-8") #Cargar base de datos y definir su formato de codificacion
 
+
+
+
+
+  
 #Tomando en cuenta la base de datos cancion_duki.csv configura el formato de la columna fecha_publicacion en el formato correcto YYYYMMDD
     canciones['fecha_publicacion'] = pd.to_datetime( 
         canciones['fecha_publicacion'].astype(str).str.strip(), #Convertir la columna fecha_publicacion en string y elimina espacios en blanco alrededor con .strip()
