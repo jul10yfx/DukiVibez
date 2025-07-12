@@ -139,7 +139,7 @@ with p0:
 with p1:
     # Mostrar el título principal de esta sección de Streamlit y una pequeña descrición
     st.header("▶️ Encuentra aqui toda la info sobre canciones de Duki")
-    st.markdown("En esta parte de la página puedes buscar cualquier tema de Duki y conocerlo más a fondo. No solo vas a ver la letra, el video o la portada, sino también cómo se siente la canción según su letra y qué dicen los fans en los comentarios. Usamos inteligencia artificial para analizar el mood de las letras y lo que opina la gente, aunque todo este análisis es solo referencial y no busca dar una verdad absoluta. Como extra, también te recomendamos canciones con una vibra parecida, para que sigas descubriendo más del universo del Duko según lo que te transmite cada tema.")
+    st.markdown("En esta sección puedes buscar cualquier canción de Duki y conocerlo más a fondo. No solo vas a ver la letra, el video o la portada, sino también cómo se siente la canción según su letra y qué dicen los fans en los comentarios. Usamos inteligencia artificial para analizar el mood de las letras y lo que opina la gente, aunque todo este análisis es solo referencial y no busca dar una verdad absoluta. Como extra, también te recomendamos canciones con una vibra parecida, para que sigas descubriendo más del universo del Duko según lo que te transmite cada tema.")
 
     # Mostrar una breve instrucción
     st.markdown("#### Escribe el nombre de una canción o selecciónala de la lista:")
