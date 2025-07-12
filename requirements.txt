@@ -1,0 +1,15 @@
+streamlit
+pandas
+altair
+textblob
+vaderSentiment
+wordcloud
+matplotlib
+streamlit
+pandas
+numpy
+altair
+wordcloud
+matplotlib
+nltk
+textblob
