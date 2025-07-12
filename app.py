@@ -26,29 +26,24 @@ palabras_excluir = set([
     "alguien", "escuchando", "cada", "vez", "que", "den", "volveré",
     "comentario", "esto", "video", "youtube", "tema", "canción",
     "2025", "este", "esta", "esas", "esas", "aqui", "ahi", "hoy", "ahora",
-    "jaja", "jajaja", "xd", "xddd", "jaj", "ajaja", "wooo", "song","letra","año","ysy","neo","la","el","spotify","ulises","tema","años","las","cuando","una"
+    "jaja", "jajaja", "xd", "xddd", "jaj", "ajaja", "wooo", "song","letra","año","ysy","neo","la","el","spotify","ulises","tema","años","las","cuando","una", "el", "la", "los", "las", "un", "una", "unos", "unas", "al", "del", "lo", "ese", "esa", "esos", "esas", "de", "a", "en", "por", "para", "con", "sin", "sobre", "entre", "hasta", "desde", "tras", "durante", "y", "o", "ni", "pero", "aunque", "porque", "que", "como", "cuando", "mientras", "ya", "si", "no", "sí", "también", "solo", "sólo", "entonces", "luego", "además", "pues", "incluso", "yo", "tú", "vos", "él", "ella", "nosotros", "ustedes", "ellos", "ellas", "me", "te", "se", "nos", "mi", "mis", "tu", "tus", "su", "sus", "es", "son", "fue", "fui", "soy", "eres", "somos", "estoy", "estás", "está", "están", "estamos", "hay", "hubo", "haber", "he", "has", "hace", "hacía", "haciendo", "hecho", "tenía", "tengo", "tenemos", "tienen", "cosa", "cosas", "vez", "veces", "algo", "alguien", "nadie", "todo", "todos", "todas", "ninguno", "ninguna", "mucho", "muy", "más", "menos", "tanto", "nada", "2020", "2021", "2022", "2023", "2024", "2025", "año", "años", "mes", "día", "hoy", "mañana", "noche", "tarde", "siempre", "nunca", "antes", "después", "video", "vídeo", "canal", "youtube", "comentario", "comentarios", "suscribete", "suscribanse", "dale", "like", "likes", , "rolón", "rolon", "tema", "canción", "letra", "letras", "musica", "música", "sonido", "sonidos", "like si", "like si escuchas", "like si estás", "like si lo ves", "cada vez que den like", "alguien en", "alguien del", "vengo del futuro", "volveré", "escuchando esto", "en el 2025", "2025 presente", "jaja", "jajaja", "jaj", "aja", "xd", "jsjs", "jajs", "ajaja", "ajaj", "uff", "woo", "wow", "eh", "ay", "oh", "ey", "ah", "ehh", "aaah",
 ])
 
 
 # INICIO DEL USO DE STREAMLIT PARA CREAR PAGINA WEB
 
 # Configuración inicial de la aplicacion en streamlit
-st.set_page_config(page_title="🗺️ Guía de canciones de Duki", layout="wide") #Definir nombre de la pagina y definir completo de todo el ancho de la pantalla
-st.title("🗺️ Guía de canciones de Duki") #Definir titulo general de la pagina de streamlit
+st.set_page_config(page_title="𓆰Duki Vibez𓆪", layout="wide") #Definir nombre de la pagina y definir completo de todo el ancho de la pantalla
+st.title("Duki Vibez 🦇") #Definir titulo general de la pagina de streamlit
+#se define la url del csv de comentarios
+url = "https://drive.google.com/uc?id=10rkx7VmJm1-WXDAXxaBUqPSiLXTN1NPS" #por las limitaciones de github de 25mb lo tuve q subir mi archivos csv a drive, este es el link: https://drive.google.com/file/d/10rkx7VmJm1-WXDAXxaBUqPSiLXTN1NPS/view?usp=drive_link
 
-url = "https://drive.google.com/uc?id=10rkx7VmJm1-WXDAXxaBUqPSiLXTN1NPS"
-
-# 📁 Carga de datos con caché
-@st.cache_data #Cargar base de datos y definir su formato
+# Carga de datos con caché para optimizar tiempos de carga
+@st.cache_data 
 def cargar_datos(): #Cargar base de datos y definir su formato
     canciones = pd.read_csv("canciones_duki.csv", sep=";", encoding="utf-8") #Cargar base de datos y definir su formato de codificacion
-    comentarios = pd.read_csv(url, encoding="utf-8") #Cargar base de datos y definir su formato de codificacion
+    comentarios = pd.read_csv(url, encoding="utf-8") #Cargar base de datos y definir su formato de codificacion desde drive
 
-
-
-
-
-  
 #Tomando en cuenta la base de datos cancion_duki.csv configura el formato de la columna fecha_publicacion en el formato correcto YYYYMMDD
     canciones['fecha_publicacion'] = pd.to_datetime( 
         canciones['fecha_publicacion'].astype(str).str.strip(), #Convertir la columna fecha_publicacion en string y elimina espacios en blanco alrededor con .strip()
@@ -67,7 +62,7 @@ p0, p1, p2, p3, p4 = st.tabs(["🏠 Página inicial", "🔍 Busqueda de Cancione
 
 #COnfigurar pestaña inicial de streamlit
 with p0:
-    st.header("¡Hola Diablx!?")
+    st.header("¡Hola Diablx!")
 
     # Imagen a la izquierda del texto de bienvenida
     col1, col2 = st.columns([1, 2])
@@ -76,18 +71,18 @@ with p0:
     with col2:
         st.markdown("¿Eres un fan de Duki y quieres conocer nuevas canciones o recién estás empezando a adentrarte dentro de su música? No te preocupes, que en DukiTube te volveremos un verdadero Rockstar. Página actualizada al 8/07/2025 02:55 a.m.")
 
-    st.header("¿Qué es Duki?")
-
-    # Imagen a la derecha del texto sobre la app
+    st.header("¿Qué es Duki Vibez?")
+    
+    # Poner columnas para tener imagen a la derecha del texto en esta pestaña
     col3, col4 = st.columns([2, 1])
     with col3:
-        st.markdown("Insertar texto sobre de qué trata la app")
+        st.markdown("Duki Vibez funciona como una guía para explorar a fondo la música del artista argentino Duki utilizando datos de la plataforma YouTube. Aquí puedes buscar cualquier canción y ver su letra, video y datos clave como vistas o likes. También se analizan (de manera referencial) los sentimientos de las letras con IA (TextBlob) y de los comentarios de los fans con VADER, mostrando además los comentarios más relevantes. Tambien puedes explorar diversos rankings por vistas, colaboraciones o buscar canciones en base a su añode publicación,  por álbum o artista con quien colabora. Por último, puedes dejar que el azar te recomiende una canción. Todo esto en un solo lugar, para conocer mejor al Duko. Ahhora disfruta de explorar nuestras funciones. Ya Supiste 🤘.")
     with col4:
         st.image("duki2.jpg", width=300)
 
     st.header("¿Quién es Duki?")
 
-    # Imagen a la izquierda del texto sobre Duki
+    # INSERTAR Imagen a la izquierda del texto sobre Duki
     col5, col6 = st.columns([1, 3])
     with col5:
         st.image("duki3.jpg", width=500)
@@ -108,87 +103,88 @@ with p0:
         "- [Spotify](https://open.spotify.com/intl-es/artist/1bAftSH8umNcGZ0uyV7LMg)\n"
         "- [YouTube](https://www.youtube.com/@duki)"
     )
-
+#Trabajar con la pestaña p1 sobre canciones
 with p1:
-    # 🟦 Muestra el título principal de esta sección de Streamlit
-    st.header("🔍 Buscar y analizar una canción de Duki")
+    # Mostrar el título principal de esta sección de Streamlit y una pequeña descrición
+    st.header("🔍 Encuentra aqui toda la info sobre canciones de Duki")
+    st.markdown("En esta parte de la página puedes buscar cualquier tema de Duki y conocerlo más a fondo. No solo vas a ver la letra, el video o la portada, sino también cómo se siente la canción según su letra y qué dicen los fans en los comentarios. Usamos inteligencia artificial para analizar el mood de las letras y lo que opina la gente, aunque todo este análisis es solo referencial y no busca dar una verdad absoluta. Como extra, también te recomendamos canciones con una vibra parecida, para que sigas descubriendo más del universo del Duko según lo que te transmite cada tema.")
 
-    # 🟦 Muestra una breve instrucción
+    # Mostrar una breve instrucción
     st.markdown("#### Escribe el nombre de una canción o selecciónala de la lista:")
 
-    # 🟦 Campo de texto para buscar una canción. Se limpia de espacios y se convierte a minúsculas
+    # Definir un campo de texto para buscar una canción. Se limpian de espacios y se convierten a minúsculas
     busqueda = st.text_input("Buscar canción", "").strip().lower()
 
-    # Si se escribió algo en el campo de búsqueda
+    # Funcion para verificar si se escribio algo en el campo de búsqueda
     if busqueda:
-        # 🟦 Filtra el DataFrame buscando coincidencias en los títulos de canciones
+        # Filtrar el df buscando coincidencias en los títulos de canciones
         coincidencias = canciones_df[canciones_df['titulo_cancion'].str.lower().str.contains(busqueda)]
         
-        # 🔷 Si no se encontraron coincidencias
+        # en caso de que no se encuentren coincidencias
         if coincidencias.empty:
             st.warning("No se encontraron coincidencias.")  # 🟦 Muestra advertencia
             st.stop()  # 🟦 Detiene la ejecución del resto del código
 
-        # 🟦 Si hay coincidencias, muestra un selectbox con los títulos ordenados
+        # Si si hay coincidencias, mostrar un selectbox con los títulos ordenados alfabeticamente
         seleccion = st.selectbox("Coincidencias encontradas:", coincidencias['titulo_cancion'].sort_values())
     else:
-        # 🟦 Si no se escribió nada, muestra todas las canciones disponibles
+        # Si no se escribio nada, mostrar todas las canciones disponibles
         seleccion = st.selectbox("Selecciona una canción:", canciones_df['titulo_cancion'].sort_values())
 
-    # 🟦 Extrae la fila de la canción seleccionada
+    # Extraer la fila de info del dataframe de la canción seleccionada
     cancion = canciones_df[canciones_df['titulo_cancion'] == seleccion].iloc[0]
 
-    # 🟦 Divide la vista en dos columnas
+    # Dividir la interfaz del streamlit en dos columnas para una apariencia similar a Yotube
     col1, col2 = st.columns([2, 3])
 
     with col1:
-        # 🟦 Botones tipo radio para elegir qué visualizar: portada o video
+        # Mostrar otones tipo radio para seleccionar v portada o video
         visual = st.radio("Visualizar:", ["Portada", "Video"], horizontal=True)
 
-        # 🔷 Si elige Portada
+        # Si el usuario elige ver la portada
         if visual == "Portada":
-            # 🔷 Si hay URL de portada disponible
+            #verificar que haya una URL de portada en e csv disponible
             if pd.notna(cancion['url_portada']):
-                st.image(cancion['url_portada'], use_container_width=False, width=360)  # 🟦 Muestra imagen
+                st.image(cancion['url_portada'], use_container_width=False, width=360)  # Muestrar imagen de portada
             else:
-                st.info("No hay imagen de portada disponible.")  # 🟦 Muestra info
+                st.info("No hay imagen de portada disponible.")  #mensaje de error
         else:
-            # 🔷 Si hay URL de video
+            # Verificar que haya unsv URL de video
             if pd.notna(cancion['url_video']):
-                st.video(cancion['url_video'])  # 🟦 Muestra video
+                st.video(cancion['url_video'])  # mostrar video
             else:
-                st.warning("No hay video disponible.")  # 🟦 Muestra advertencia
+                st.warning("No hay video disponible.")  # mostrar advertencia
 
-        # 🟦 Métricas de vistas y likes
+        # Colocar métricas de vistas y likes debajo del video
         m1, m2 = st.columns(2)
         m1.metric("👁️ Vistas", int(cancion['vistas']))
-        m2.metric("❤ Likes", int(cancion['likes']))
+        m2.metric("❤️ Likes", int(cancion['likes']))
 
-        # 🟦 Formatea la fecha de publicación
+        # Colocar la fecha de publicación camiado el formato del csv hacia DDMMYYYY
         fecha_pub = cancion['fecha_publicacion']
         fecha_formateada = fecha_pub.strftime('%d %b %Y') if not pd.isna(fecha_pub) else 'Fecha desconocida'
         st.markdown(f"**🗓️ Fecha:** {fecha_formateada}")
 
-        # 🔷 Si la canción es colaboración
+        # aCOMPROBAR Si la canción es colaboración
         colab_val = str(cancion['colaboracion']).strip().lower()
         if colab_val in ['true', '1', '¡', 'si'] and pd.notna(cancion['artistas_colabo']) and cancion['artistas_colabo'].strip():
-            st.markdown(f"**🌷 Colaboradores:** {cancion['artistas_colabo']}")
+            st.markdown(f"**👤 Artistas que aparecen en esta canción:** {cancion['artistas_colabo']}")
 
-        # 🔷 Si pertenece a un álbum (y no es un single)
+        # comprobar si pertenece a un álbum (y no es un sencillo)
         if str(cancion['album']).strip().lower() not in ['sencillo', 'single', '']:
-            st.markdown(f"**🎵 Álbum:** {cancion['album']}")
+            st.markdown(f"**💿 Álbum:** {cancion['album']}")
 
-        # 🟦 Calcula el ranking de vistas y likes
+        # Caluclar a el ranking de vistas y likes
         posicion_vistas = canciones_df['vistas'].rank(ascending=False, method='min')[canciones_df['titulo_cancion'] == cancion['titulo_cancion']].values[0].astype(int)
         posicion_likes = canciones_df['likes'].rank(ascending=False, method='min')[canciones_df['titulo_cancion'] == cancion['titulo_cancion']].values[0].astype(int)
         total_canciones = len(canciones_df)
 
-        # 🟦 Muestra ranking de la canción
+        # Mostrar ranking de la canción
         st.markdown(f"""
-        🔹 {cancion['titulo_cancion']} está en el **top {posicion_vistas} de {total_canciones}** en vistas y en el **top {posicion_likes} de {total_canciones}** en likes.  
+        📊 {cancion['titulo_cancion']} ocupa el **top {posicion_vistas} de {total_canciones}** en vistas y el **top {posicion_likes} de {total_canciones}** en likes.  
         """)
 
-        # 🟦 Muestra los comentarios con más likes
+        # Mostrarlos comentarios con más likes con una pestaña aparte
     with col1:
         with st.expander("💬 Comentarios con más likes"):
             comentarios_cancion = comentarios_df[comentarios_df['video_id'] == cancion['video_id']].copy()
@@ -208,19 +204,19 @@ with p1:
             st.markdown("</div>", unsafe_allow_html=True)
 
     with col2:
-        # 🟦 Muestra encabezado con nombre de la canción
+        # Muestra titulo con nombre de la canción
         st.header(f"🎵 {cancion['titulo_cancion']}")
 
         with st.expander("📖 Letra completa"):
             st.markdown(f"<div style='max-height: 300px; overflow-y: auto; white-space: pre-wrap;'>{cancion['lyrics']}</div>", unsafe_allow_html=True)
 
-        # 🟦 Análisis de sentimiento con TextBlob
-        with st.expander("🧪 Análisis de sentimiento de la letra (TextBlob)"):
+        # Análisis de sentimiento de las letras de la canción con TextBlob
+        with st.expander("⭕ Análisis de sentimiento de la letra (TextBlob)"):
             blob = TextBlob(str(cancion['lyrics']))
             pol = blob.sentiment.polarity
             senti = "Positivo" if pol > 0 else "Negativo"
 
-            # 🟦 Construcción del gráfico de polaridad
+              # Analsis de comentarios con VADER (ayuda con ia)
             base_df = pd.DataFrame({'x': [-1, 1], 'y': [0, 0]})
             punto_df = pd.DataFrame({'x': [pol], 'y': [0], 'Etiqueta': [senti]})
             etiquetas_df = pd.DataFrame({'x': [-1, 1], 'y': [0, 0], 'Etiqueta': ['Negativo (-1)', 'Positivo (1)']})
@@ -242,13 +238,13 @@ with p1:
             st.altair_chart(chart, use_container_width=False)
             st.caption("Este análisis mide la polaridad de la letra, desde -1 (muy negativo) hasta +1 (muy positivo).")
 
-        # 🟦 Análisis de comentarios con VADER
+        # Analsis de comentarios con VADER (ayuda con ia)
         with st.expander("🔎 Análisis de comentarios (VADER)"):
             st.markdown("Distribución de comentarios por sentimiento:")
             analyzer = SentimentIntensityAnalyzer()
             comentarios = comentarios_df[comentarios_df['video_id'] == cancion['video_id']]['text_display'].dropna()
 
-            # 🟦 Aplica VADER y clasifica
+            # APLICAR VADER y clasificar los resultados (apoyo ia)
             resultados = comentarios.apply(lambda x: analyzer.polarity_scores(str(x)))
             categorias = resultados.apply(lambda x: 'Positivo' if x['compound'] > 0.05 else 'Negativo' if x['compound'] < -0.05 else 'Neutro')
             conteo_df = categorias.value_counts().reindex(['Positivo', 'Neutro', 'Negativo'], fill_value=0).reset_index()
@@ -270,7 +266,7 @@ with p1:
 
             st.altair_chart(graf + texto, use_container_width=True)
 
-            # 🟦 Limpieza de texto y generación de nube de palabras
+            # Limpiar texto y generar nube de palabras
             letras = set(re.sub(r"[^\w\s]", "", str(cancion['lyrics']).lower()).split())
             frases_excluir = {'alguien del 2025', 'cada vez que den like volveré', 'like si escuchas esto en'}
             texto_completo = ' '.join([emoji_pattern.sub('', str(t).lower()) for t in comentarios if isinstance(t, str)])
@@ -279,7 +275,7 @@ with p1:
             nube = WordCloud(width=600, height=300, background_color='black', colormap='Reds').generate(' '.join(palabras))
             st.image(nube.to_array(), use_container_width=True)
 
-            # 🟦 Muestra ejemplos de comentarios según sentimiento
+            # Mostrar ejemplos de comentarios según sentimiento
             tipos = ['Positivo', 'Neutro', 'Negativo']
             for tipo in tipos:
                 subset = comentarios[categorias == tipo]
@@ -289,23 +285,24 @@ with p1:
                     for txt in ejemplos:
                         st.markdown(f"> {txt}")
 
-        # 🟦 Recomienda canciones similares por polaridad
+        # Recomendacion de canciones similares por polaridad
         todas_con_polaridad = canciones_df.copy()
         todas_con_polaridad['polarity'] = canciones_df['lyrics'].apply(lambda x: TextBlob(str(x)).sentiment.polarity)
         cancion_pol = TextBlob(str(cancion['lyrics'])).sentiment.polarity
         todas_con_polaridad['diferencia'] = (todas_con_polaridad['polarity'] - cancion_pol).abs()
         similares = todas_con_polaridad.sort_values(by='diferencia').head(6)
-        with st.expander("🔎 Canciones con polaridad similar (TextBlob)"):
+        with st.expander("📻 Canciones similares (Según TextBlob):
             st.markdown("Estas recomendaciones se basan en la similitud del sentimiento de la letra (análisis de polaridad).")
             for _, fila in similares.iterrows():
                 if fila['titulo_cancion'] != cancion['titulo_cancion']:
-                    st.markdown(f"- [{fila['titulo_cancion']}]({fila['url_video']}) ({fila['polarity']:.2f})")
-
+                    st.markdown(f"- [{fila['titulo_cancion']}]({fila['url_video']}) ({fila['polarity']:.2f})") #colocar hievinculo con url_Video
+          
 
 #Tranajar con la pestaña p2 de la sección de rankings generales
 with p2:
-    st.header("📊 Rankings Generales")  # Mostrar encabezado principal de la pagina
-
+    st.header("📶 Rankings Generales")  # Mostrar encabezado principal de la pagina
+    st.markdown("En esta sección puedes explorar distintas listas de canciones de Duki según su numero de visitas (según Youtube). Puedes ver cuáles son las canciones más famosas de toda su carrera, cuáles han sido colaboraciones con otros artistas, e incluso ver sus canciones más famosas como solista. Además, si tienes curiosidad por saber con quién colabora más seguido, también te mostramos un ranking de los artistas con los que Duki ha trabajado más veces. . Si alguna de estas canciones te interesa puedes canción puedes revisarla a mas profunidad en nuestro 🔎 Buscador de canciones."
+  
     # Mostrar una imagen alineada a la izquierda y una descripción de la pestaña
     st.markdown("<div style='display: flex; align-items: center;'>" 
                 "<img src='https://imagenes.elpais.com/resizer/v2/PUNXVKFLRNDMLNED23A4Q5ZWXM.jpg?auth=48b7d7a33597654e6294cc3e27fc76630ee8b3e82940d2e663a3b67dff261bc0&width=400&height=300&smart=true' width='200' style='margin-right: 20px;'>" 
@@ -329,19 +326,19 @@ with p2:
 
     #DICCIONARIO DE OPCIONES DE RANKING Cada clave representa un tipo de ranking que se puede seleccionar en el selectbox
     opciones = {
-        "Top 10 canciones más vistas": (
+        "Canciones más vistas (General)": (
             canciones_df.sort_values(by="vistas", ascending=False).head(10),
             "titulo_cancion", "vistas"
         ),
-        "Top 10 canciones con colaboraciones": (
+        "Canciones más vistas (Colaboraciones)": (
             canciones_df[canciones_df['colaboracion'].isin(['true', '1', '¡', 'si'])].sort_values(by="vistas", ascending=False).head(10),
             "titulo_cancion", "vistas"
         ),
-        "Top 10 canciones sin colaboraciones": (
+        "Canciones más vistas (Como solista)": (
             canciones_df[~canciones_df['colaboracion'].isin(['true', '1', '¡', 'si'])].sort_values(by="vistas", ascending=False).head(10),
             "titulo_cancion", "vistas"
         ),
-        "Top 10 artistas con más colaboraciones": (
+        "Artistas con los que Duki más ha colaborado": (
             top_artistas_df,
             "Artista", "Cantidad"
         )
@@ -351,9 +348,9 @@ with p2:
     seleccion = st.selectbox("Selecciona el ranking que deseas visualizar:", list(opciones.keys()))
     df_ranking, campo_x, campo_y = opciones[seleccion]  # Desempaqueta valores
 
-    st.subheader(f"📈 {seleccion}")  # Mostrar Subtítulo  con el nombre del ranking
+    st.subheader(f"{seleccion}")  # Mostrar Subtítulo  con el nombre del ranking
 
-    # CREACIÓN DEL GRÁFICO DE BARRAS CON ALTAIR
+    # crear grafico de barras con altair
     chart = alt.Chart(df_ranking).mark_bar().encode(
         x=alt.X(f'{campo_x}:N', sort='-y', axis=alt.Axis(labelAngle=0, labelLimit=200, title=campo_x)),  # Eje X ordenado de mayor a menor
         y=alt.Y(f'{campo_y}:Q', title=campo_y),  # Eje Y
@@ -361,7 +358,7 @@ with p2:
         color=alt.Color(f'{campo_x}:N', scale=alt.Scale(scheme='reds'), legend=None)  # Diferentes tonos de rojo por categoría
     ).properties(width=700, height=350)
 
-    # AÑADIR LOS DATOS DE CADA DATO SOBRE LAS BARRAS
+    # añadir los datos de cada barra sobre ella 
     texto = alt.Chart(df_ranking).mark_text(
         align='center', baseline='bottom', dy=-5, color='white'
     ).encode(
@@ -375,9 +372,9 @@ with p2:
 
     
 with p3:
-    # Mostrar titulo y descripcion de la pestaña 
-    st.header("🎷 Filtro por álbum, colaborador y año")
-    st.markdown("fdsdsfddfsfd")
+    # Mostrar titulo y descripcion de la pestaña en Streamlit
+    st.header("🔎 Buscador de canciones")
+    st.markdown("¿Quieres saber si Duki tiene una canción con tu artista favorito? ¿O estás buscando temas lanzados en un año o álbum específico? Esta sección es perfecta para eso. Aquí puedes filtrar todas las canciones por año de publicación, álbum o colaboradores, y ver los resultados de forma rápida en una tabla interactiva.")
 
     # Extraeer y ordenar datos para poder filtrar la tabla
     artistas = canciones_df[canciones_df['artistas_colabo'].notna() & (canciones_df['artistas_colabo'] != '')]['artistas_colabo'].str.split(', ').explode()
@@ -399,21 +396,22 @@ with p3:
         filtrado = filtrado[filtrado['fecha_publicacion'].dt.year == int(filtro_anio)]
 
     # Mostrar resultdos de la base de datos
-    st.markdown("### 📄 Resultados filtrados")
+    st.markdown("### 📎 Resultados de tu busqueda")
     st.dataframe(filtrado[['titulo_cancion', 'album', 'artistas_colabo', 'fecha_publicacion', 'vistas']].reset_index(drop=True))
 
 
 # Inicia el contenido dentro de la pestaña 5 (p5) correspondiente a la sección de "Canción aleatoria"
 with p4:
     # Muestra el encabezado de la sección
-    st.header("🎲 Canción aleatoria")
+    st.header("🎲 Canción Aleatoria")
+    st.markdown("Si estás buscando descubrir nuevas canciones de Duki o simplemente quieres una recomendación rápida sin complicarte, esta sección es ideal. Con solo un clic, la app te muestra una canción al azar junto. Si te gustó la canción puedes encontrarla en nuestro 🔎 Buscador de canciones y ver que canciones son canciones son similares para expandir tu repertorio musical.")
 
     # Verifica si no existe aún una variable 'random_index' en la sesión, si no existe, la crea y le asigna None
     if 'random_index' not in st.session_state:
         st.session_state.random_index = None
 
     # Si se presiona el botón o si aún no se ha generado una canción aleatoria antes
-    if st.button("🎧 Generar una canción aleatoria") or st.session_state.random_index is None:
+    if st.button("🤘 Generar una canción aleatoria") or st.session_state.random_index is None:
         # Selecciona un índice aleatorio de una canción del DataFrame y lo guarda en la sesión
         st.session_state.random_index = canciones_df.sample(1).index[0]
 
@@ -445,7 +443,7 @@ with p4:
         """)
 
         # Título de la sección de la letra
-        st.markdown("📖 Letra completa")
+        st.markdown("🎤 Letra de la canción")
 
         # Muestra la letra de la canción en un contenedor con scroll, fondo oscuro y texto blanco
         st.markdown(
