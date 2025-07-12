@@ -95,7 +95,7 @@ canciones_df, comentarios_df = cargar_datos() #ejectura la funcion cargar_datos 
 
 
 #crear pestañas en la interfaz de Streamlit usando st.tabs()
-p0, p1, p2, p3, p4 = st.tabs(["🏠 Página inicial", "🎧 Canciones y más", "📊 Rankings", "🔎 Buscador de canciones", "🎲 Escuchar una canción del duko al azar"]) #
+p0, p1, p2, p3, p4 = st.tabs(["🏠 Página inicial", "🎧 Canciones y más", "📊 Rankings", "🔎 Buscador de canciones", "🎲 Canción al azar"]) #
 
 
 #COnfigurar pestaña inicial de streamlit
